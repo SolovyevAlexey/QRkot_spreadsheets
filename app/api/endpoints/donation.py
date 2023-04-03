@@ -12,16 +12,12 @@ from app.schemas.donation import DonationCreate, DonationDB
 from app.crud.investing import investing_process
 
 router = APIRouter()
-dependencies_tuple = (
-    Depends(current_superuser),
-)
 
 
 @router.get(
     '/',
     response_model=List[DonationDB],
-    # dependencies=[(Depends(current_superuser),)] вызовет ошибку AttributeError
-    dependencies=dependencies_tuple,
+    dependencies=(Depends(current_superuser),),
     response_model_exclude_none=True
 )
 async def get_all_donations(
