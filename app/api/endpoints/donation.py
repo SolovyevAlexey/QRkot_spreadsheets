@@ -17,6 +17,7 @@ router = APIRouter()
 @router.get(
     '/',
     response_model=List[DonationDB],
+    # dependencies=[(Depends(current_superuser),)] вызовет ошибку AttributeError
     dependencies=[Depends(current_superuser)],
     response_model_exclude_none=True
 )

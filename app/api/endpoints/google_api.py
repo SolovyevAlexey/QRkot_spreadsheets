@@ -11,6 +11,7 @@ from app.services.google_api import (set_user_permissions, spreadsheets_create,
                                      spreadsheets_update_value)
 
 router = APIRouter()
+GOOGLE_LINK = 'https://docs.google.com/spreadsheets/d/'
 
 
 @router.get(
@@ -31,4 +32,4 @@ async def get_report(
     await spreadsheets_update_value(spreadsheetid,
                                     projects,
                                     wrapper_services)
-    return f'Ссылка - https://docs.google.com/spreadsheets/d/{spreadsheetid}'
+    return f'Ссылка - {GOOGLE_LINK}{spreadsheetid}'
